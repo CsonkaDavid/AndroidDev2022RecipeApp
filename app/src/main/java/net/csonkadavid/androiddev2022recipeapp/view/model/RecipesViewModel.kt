@@ -8,9 +8,7 @@ import kotlinx.coroutines.launch
 import net.csonkadavid.androiddev2022recipeapp.persistence.model.RecipeEntity
 import net.csonkadavid.androiddev2022recipeapp.repository.RecipeRepository
 import net.csonkadavid.androiddev2022recipeapp.view.fragment.AddRecipeFragmentDirections
-import net.csonkadavid.androiddev2022recipeapp.view.fragment.RecipeListFragment
 import net.csonkadavid.androiddev2022recipeapp.view.fragment.RecipeListFragmentDirections
-import net.csonkadavid.androiddev2022recipeapp.view.fragment.SingleRecipeFragmentDirections
 import net.csonkadavid.webdev2022recipeapp.R
 
 class RecipesViewModel (private val recipeRepository: RecipeRepository, private val navController: NavController)
@@ -46,6 +44,10 @@ class RecipesViewModel (private val recipeRepository: RecipeRepository, private 
     val addRecipeIngredients : LiveData<String>
         get() = _addRecipeIngredients
 
+    private var _addRecipeImageUri = MutableLiveData<String>()
+    val addRecipeImageUri : LiveData<String>
+        get() = _addRecipeImageUri
+
     private var _addRecipeDescription = MutableLiveData<String>()
     val addRecipeDescription : LiveData<String>
         get() = _addRecipeDescription
@@ -71,21 +73,29 @@ class RecipesViewModel (private val recipeRepository: RecipeRepository, private 
         navController.navigate(R.id.addRecipeFragment)
     }
 
-    fun navigateToListFragment(view :View) {
-        Navigation
-            .findNavController(view)
-            .navigate(AddRecipeFragmentDirections
-                .actionAddRecipeFragmentToRecipeListFragment(addRecipeName.value!!))
+    fun navigateToListFragment() {
+        navController.navigate(R.id.recipeListFragment)
     }
 
-    fun addRecipe(name:String,
-                  category:String,
-                  prepTime:String,
-                  ingredients:String,
+    fun deleteRecipe(name :String,
+                     category :String,
+                     prepTime :String,
+                     ingredients :String,
+                     imageUri :String,
+                     description :String) {
+        
+        navController.navigate(R.id.recipeListFragment)
+    }
+
+    fun addRecipe(name :String,
+                  category :String,
+                  prepTime :String,
+                  ingredients :String,
+                  imageUri :String,
                   description :String) {
 
         viewModelScope.launch {
-            recipeRepository.saveRecipe(name, category, prepTime.toInt(), ingredients, description)
+            recipeRepository.saveRecipe(name, category, prepTime.toInt(), ingredients, imageUri, description)
         }
     }
 
@@ -100,6 +110,11 @@ class RecipesViewModel (private val recipeRepository: RecipeRepository, private 
     fun changeAddRecipePrepTime(s :String) {
         _addRecipePrepTime.value = s
     }
+
+    fun changeAddRecipeImageUri(s :String) {
+        _addRecipeImageUri.value = s
+    }
+
     fun changeAddRecipeDescription(s :String) {
         _addRecipeDescription.value = s
     }

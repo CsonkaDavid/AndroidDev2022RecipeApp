@@ -15,6 +15,7 @@ import net.csonkadavid.webdev2022recipeapp.databinding.FragmentSingleRecipeBindi
 
 class SingleRecipeFragment : Fragment() {
 
+    private lateinit var viewModel :RecipesViewModel
     private lateinit var binding: FragmentSingleRecipeBinding
 
     private val args: SingleRecipeFragmentArgs by navArgs()
@@ -23,7 +24,11 @@ class SingleRecipeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSingleRecipeBinding.inflate(inflater)
+        binding = FragmentSingleRecipeBinding.inflate(inflater, container, false)
+
+        setupViewModel()
+
+        binding.viewModel = viewModel
 
         binding.singleRecipeName.text = args.clickedRecipeName
         binding.singleRecipeCategory.text = args.clickedRecipeCategory
@@ -31,6 +36,25 @@ class SingleRecipeFragment : Fragment() {
         binding.singleRecipeIngredients.text = args.clickedRecipeIngredients
         binding.singleRecipeDescription.text = args.clickedRecipeDescription
 
+        binding.floatingActionButton3.setOnClickListener {
+            viewModel.deleteRecipe(
+                "",
+                "",
+                "",
+                "",
+                "",
+                "")
+        }
+
         return binding.root
+    }
+
+    private fun setupViewModel() {
+        viewModel = ViewModelProvider(
+            this,
+            RecipesViewModel.Factory(
+                RecipeRepository(
+                    RecipeDatabase.getInstance(requireContext()).recipeDao), findNavController())
+        )[RecipesViewModel::class.java]
     }
 }

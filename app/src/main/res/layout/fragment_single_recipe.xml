@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="net.csonkadavid.androiddev2022recipeapp.view.model.RecipesViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -85,6 +91,19 @@
             android:text="perc"
             app:layout_constraintStart_toEndOf="@+id/single_recipe_prepTime"
             app:layout_constraintTop_toBottomOf="@+id/single_recipe_category" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:clickable="true"
+            app:backgroundTint="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.919"
+            app:layout_constraintStart_toEndOf="@+id/single_recipe_name"
+            app:layout_constraintTop_toBottomOf="@+id/single_recipe_description"
+            app:srcCompat="@android:drawable/ic_delete" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

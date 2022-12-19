@@ -69,6 +69,10 @@ class AddRecipeFragment : Fragment() {
         viewModel.addRecipeDescription.observe(viewLifecycleOwner) {
             binding.description = it
         }
+
+        viewModel.addRecipeImageUri.observe(viewLifecycleOwner) {
+            binding.imageUri = it
+        }
     }
 
     private fun setupTextChanges() {
@@ -101,9 +105,10 @@ class AddRecipeFragment : Fragment() {
                 binding.category!!,
                 binding.prepTime!!,
                 binding.ingredients!!,
+                "",
                 binding.description!!)
 
-            viewModel.navigateToListFragment(binding.root)
+            viewModel.navigateToListFragment()
         }
     }
 }

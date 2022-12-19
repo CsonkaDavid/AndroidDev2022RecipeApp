@@ -23,7 +23,7 @@ abstract class RecipeDatabase :RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         RecipeDatabase::class.java,
-                        "recipeDatabase.db"
+                        "recipesDatabase.db"
                     )
                         .build()
 

@@ -1,8 +1,8 @@
 package net.csonkadavid.androiddev2022recipeapp.persistence.model;
 
 import androidx.room.ColumnInfo
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.sql.Types.BLOB
 
 @Entity(tableName = "recipes")
@@ -19,6 +19,9 @@ data class RecipeEntity(
 
     @ColumnInfo(typeAffinity = BLOB)
     var ingredients: String,
+
+    @ColumnInfo(name = "image_uri")
+    var imageUri: String,
 
     @ColumnInfo(typeAffinity = BLOB)
     var description: String

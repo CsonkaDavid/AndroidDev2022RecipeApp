@@ -12,11 +12,12 @@ class RecipeRepository(private val recipeDao: RecipeDao) {
         category: String,
         prepTime :Int,
         ingredients :String,
+        imageUri :String,
         description: String) {
 
         recipeDao
             .insert(RecipeEntity(0,
-                name, category, prepTime, ingredients ,description)
+                name, category, prepTime, ingredients , imageUri, description)
             )
     }
 }

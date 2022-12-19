@@ -2,6 +2,7 @@ package net.csonkadavid.androiddev2022recipeapp.persistence.repository
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import net.csonkadavid.androiddev2022recipeapp.persistence.model.RecipeEntity
@@ -13,4 +14,7 @@ interface RecipeDao {
 
     @Insert
     suspend fun insert(recipeEntity: RecipeEntity)
+
+    @Delete
+    suspend fun delete(recipeEntity: RecipeEntity)
 }

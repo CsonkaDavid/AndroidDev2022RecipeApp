@@ -11,10 +11,6 @@
         <action
             android:id="@+id/action_recipeListFragment_to_addRecipeFragment"
             app:destination="@id/addRecipeFragment" />
-        <argument
-            android:name="latest_recipe_name"
-            app:argType="string"
-            android:defaultValue=""/>
         <action
             android:id="@+id/action_recipeListFragment_to_singleRecipeFragment"
             app:destination="@id/singleRecipeFragment" />
@@ -27,9 +23,6 @@
         <action
             android:id="@+id/action_addRecipeFragment_to_recipeListFragment"
             app:destination="@id/recipeListFragment" />
-        <argument
-            android:name="latest_recipe_name"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/singleRecipeFragment"

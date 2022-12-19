@@ -21,6 +21,9 @@
             name="ingredients"
             type="String" />
         <variable
+            name="imageUri"
+            type="String" />
+        <variable
             name="description"
             type="String" />
     </data>
@@ -34,7 +37,7 @@
             android:id="@+id/editRecipeName"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="84dp"
             android:ems="10"
             android:hint="Recipe title"
             android:inputType="textPersonName"
@@ -72,7 +75,7 @@
             android:id="@+id/editRecipeIngredients"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:ems="10"
             android:hint="Ingredients"
             android:inputType="textMultiLine"
@@ -94,19 +97,44 @@
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editRecipeIngredients"
-            app:layout_constraintVertical_bias="0.078" />
+            app:layout_constraintVertical_bias="0.074" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:clickable="true"
             android:src="@android:drawable/ic_input_add"
             app:backgroundTint="@color/emerald_light"
+            app:layout_constraintBottom_toTopOf="@+id/editRecipeName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/add_recipe_image_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/emerald_contrast"
+            android:text="Choose Image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editRecipeDescription" />
+
+        <ImageView
+            android:id="@+id/add_recipe_image"
+            android:layout_width="240dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_recipe_image_button"
+            tools:srcCompat="@color/white" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,9 +1,11 @@
 package net.csonkadavid.androiddev2022recipeapp.view.recycler
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -28,11 +30,13 @@ class RecipeListRecyclerViewAdapter(
             var recipeNameView :TextView
             var recipeCategoryView :TextView
             var recipePrepTimeView :TextView
+            var recipeImageView :ImageView
 
             init {
                 recipeNameView = itemView.findViewById(R.id.element_recipe_name)
                 recipeCategoryView = itemView.findViewById(R.id.element_recipe_category)
                 recipePrepTimeView = itemView.findViewById(R.id.element_recipe_prepTime)
+                recipeImageView = itemView.findViewById(R.id.element_recipe_image)
 
                 itemView.setOnClickListener {
                     val pos = adapterPosition
@@ -97,7 +101,7 @@ class RecipeListRecyclerViewAdapter(
                 val recipe = recipeModelList[position-1]
 
                 holder.recipeNameView.text = recipe.name
-
+                holder.recipeImageView.setImageResource(R.drawable.pngegg)
                 holder.recipeCategoryView.text = recipe.category
                 holder.recipePrepTimeView.text = recipe.prepTime.toString()
             }

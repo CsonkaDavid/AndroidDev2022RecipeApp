@@ -24,8 +24,6 @@ class RecipeListFragment : Fragment(), IClickableRecycler {
     private lateinit var recyclerView: RecyclerView
     private lateinit var binding : FragmentRecipeListBinding
 
-    private val args: RecipeListFragmentArgs by navArgs()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,8 +38,6 @@ class RecipeListFragment : Fragment(), IClickableRecycler {
         setupObservers()
 
         binding.recipesViewModel = viewModel
-
-        binding.latestRecipeText.text = args.latestRecipeName
 
         return binding.root
     }
