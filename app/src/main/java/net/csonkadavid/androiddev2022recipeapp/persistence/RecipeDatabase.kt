@@ -1,11 +1,13 @@
-package net.csonkadavid.webdev2022recipeapp.persistence.database
+package net.csonkadavid.androiddev2022recipeapp.persistence
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import net.csonkadavid.androiddev2022recipeapp.persistence.model.RecipeEntity
+import net.csonkadavid.androiddev2022recipeapp.persistence.repository.RecipeDao
 
-@Database(entities = [Recipe::class], version = 1)
+@Database(entities = [RecipeEntity::class], version = 1)
 abstract class RecipeDatabase :RoomDatabase() {
     abstract val recipeDao: RecipeDao
 
@@ -21,9 +23,8 @@ abstract class RecipeDatabase :RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         RecipeDatabase::class.java,
-                        "recipe_database"
+                        "recipeDatabase.db"
                     )
-                        .fallbackToDestructiveMigration()
                         .build()
 
                     INSTANCE = instance

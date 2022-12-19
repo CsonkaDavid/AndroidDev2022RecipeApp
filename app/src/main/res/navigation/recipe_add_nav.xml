@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recipe_add_nav"
+    app:startDestination="@id/recipeListFragment">
+    <fragment
+        android:id="@+id/recipeListFragment"
+        android:name="net.csonkadavid.androiddev2022recipeapp.view.fragment.RecipeListFragment"
+        android:label="Recipes" >
+        <action
+            android:id="@+id/action_recipeListFragment_to_addRecipeFragment"
+            app:destination="@id/addRecipeFragment" />
+        <argument
+            android:name="latest_recipe_name"
+            app:argType="string"
+            android:defaultValue=""/>
+        <action
+            android:id="@+id/action_recipeListFragment_to_singleRecipeFragment"
+            app:destination="@id/singleRecipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addRecipeFragment"
+        android:name="net.csonkadavid.androiddev2022recipeapp.view.fragment.AddRecipeFragment"
+        android:label="Add Recipe"
+        tools:layout="@layout/fragment_add_recipe" >
+        <action
+            android:id="@+id/action_addRecipeFragment_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
+        <argument
+            android:name="latest_recipe_name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleRecipeFragment"
+        android:name="net.csonkadavid.androiddev2022recipeapp.view.fragment.SingleRecipeFragment"
+        android:label="SingleRecipeFragment" >
+        <action
+            android:id="@+id/action_singleRecipeFragment_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
+        <argument
+            android:name="clicked_recipe_name"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="clicked_recipe_category"
+            app:argType="string"
+            android:defaultValue=""/>
+
+        <argument
+            android:name="clicked_recipe_prepTime"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="clicked_recipe_ingredients"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="clicked_recipe_description"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
+</navigation>

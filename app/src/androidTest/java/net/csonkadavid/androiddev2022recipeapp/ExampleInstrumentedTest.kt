@@ -1,4 +1,4 @@
-package net.csonkadavid.webdev2022recipeapp
+package net.csonkadavid.androiddev2022recipeapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
